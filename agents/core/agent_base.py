@@ -59,15 +59,23 @@ class AgentBase:
         return ",".join(sorted(res))
 
     def generate_slug(self, name: str, owner: str, cursor) -> str:
+        """Owner/RepoベースのSlugを生成（例: microsoft-autogen）し衝突を防ぐ"""
+        base_str = f"{owner}-{name}" if owner else name
         try:
-            base_slug = slugify(name)
-            cursor.execute("SELECT id FROM agents WHERE slug = ?", (base_slug,))
-            if cursor.fetchone():
-                return slugify(f"{owner}-{name}")
-            return base_slug
-        except NameError:
-            # Fallback if python-slugify not installed
-            return name.lower().replace(" ", "-")
+            from slugify import slugify
+            slug = slugify(base_str)
+        except ImportError:
+            slug = base_str.lower().replace(" ", "-")
+        
+        # Conflict check (fallback with incrementing number just in case)
+        original_slug = slug
+        counter = 1
+        while True:
+            cursor.execute("SELECT id FROM agents WHERE slug = ?", (slug,))
+            if not cursor.fetchone():
+                return slug
+            slug = f"{original_slug}-{counter}"
+            counter += 1
 
     def save_to_db(self, agent_data: dict, exp_id: str, summary: str, filepath: str):
         db_path = PROJECT_ROOT / "database" / "agents.db"

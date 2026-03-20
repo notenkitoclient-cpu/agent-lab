@@ -144,25 +144,24 @@ class GitHubHunterAgent(AgentBase):
         try:
             import anthropic
             client = anthropic.Anthropic(api_key=api_key)
-            prompt = f"""You are an AI assistant helping to summarize GitHub repositories for a tech media called 'Agent Lab'.
+            prompt = f"""You are an AI assistant helping to curate GitHub repositories for a tech media called 'Agent Lab'.
 
 Repository: {repo['full_name']}
 Description: {repo.get('description', 'No description')}
 README (excerpt):
 {readme}
 
-Summarize this repository in EXACTLY 3 bullet points in ENGLISH.
-Focus on:
-- What it does
-- Why it is useful / What problem it solves
-- Who should use it
+Analyze this repository and provide exactly 3 pieces of information in ENGLISH. Do not include extra text.
 
-Format:
-- [bullet 1]
-- [bullet 2]
-- [bullet 3]
+1. ONE-LINE BENEFIT: A single, punchy sentence focusing strictly on the user benefit (What problem does it solve for me?). Keep it under 60 characters.
+2. DISCOVERY REASON: Explain briefly from an AI Agent perspective why this tool is relevant NOW. (e.g., "RAG is becoming standard, and this simplifies parsing.")
+3. TREND TAG: Pick exactly ONE normalized tag that best describes this tool from the following list:
+[LLM, AI, Agents, Automation, Machine Learning, Deep Learning, NLP, RAG, DevTools, Coding Agent]
 
-Keep each bullet under 60 characters. Be specific and interesting."""
+Format your response EXACTLY like this:
+Benefit: [Your one-line benefit]
+Reason: [Your discovery reason]
+Tag: [Your chosen tag]"""
 
             message = client.messages.create(
                 model="claude-haiku-4-5-20251001",
@@ -176,10 +175,9 @@ Keep each bullet under 60 characters. Be specific and interesting."""
         except Exception as e:
             return f"（要約エラー: {e}）\n説明: {repo.get('description', 'なし')}"
 
-    def generate_x_post(self, repo: dict, summary: str, exp_id: str) -> str:
-        """X投稿文を生成"""
-        desc = repo.get('description', '')
-        return f"Agent Experiment #{exp_id}\n\nDiscovered an interesting AI tool 👀\n\nTool: {repo['name']}\n\nWhat it does:\n{summary}\n\n⭐ {repo['stars']} stars\n🔗 Repo: {repo['url']}\n\n#AgentLab #AIAgent #GitHub"
+    def generate_x_post(self, repo: dict, benefit: str, exp_id: str) -> str:
+        """X投稿文を生成（ベネフィットファースト）"""
+        return f"Agent Experiment #{exp_id}\n\n{repo['name']}: {benefit} 🔥\nDiscovered by Agent Lab.\n\n⭐ {repo['stars']} stars\n🔗 Repo: {repo['url']}\n\n#AgentLab #AIAgent #GitHub"
 
     def run(self, dry_run=False, language="", top=1, **kwargs):
         """エージェントのメイン処理（CLIから呼ばれる）"""
@@ -234,14 +232,24 @@ Keep each bullet under 60 characters. Be specific and interesting."""
             # STEP 4: Claude要約
             self.log("🧠 Generating summary with Claude...", "dim")
             if dry_run:
-                summary = f"- {selected.get('description', 'AI Tool')[:50]}\n- Trending rapidly on GitHub\n- Great for developers and researchers"
+                summary_raw = "Benefit: Great for developers and researchers\nReason: We picked this because it's trending rapidly.\nTag: DevTools"
             else:
-                summary = self.summarize_with_claude(readme, selected)
+                summary_raw = self.summarize_with_claude(readme, selected)
+
+            # 解析
+            benefit = selected.get('description', 'AI Tool')[:50]
+            reason = ""
+            tag = "Other"
+            
+            for line in summary_raw.split('\n'):
+                if line.startswith("Benefit:"): benefit = line.replace("Benefit:", "").strip()
+                elif line.startswith("Reason:"): reason = line.replace("Reason:", "").strip()
+                elif line.startswith("Tag:"): tag = line.replace("Tag:", "").strip()
 
             # STEP 5: X投稿文生成
-            x_post = self.generate_x_post(selected, summary, exp_id)
+            x_post = self.generate_x_post(selected, benefit, exp_id)
 
-            # STEP 6: Markdownレポジトリコンテンツ作成 (AgentBaseに渡す中身)
+            # STEP 6: Markdownレポジトリコンテンツ作成
             content_md = f"""## Discovered Repository
 
 | Property | Value |
@@ -255,9 +263,11 @@ Keep each bullet under 60 characters. Be specific and interesting."""
 
 ---
 
-## AI Summary
+## AI Analysis
 
-{summary}
+**🔥 Benefit:** {benefit}
+**👁️ Discovery Reason:** {reason}
+**🏷️ Trend Tag:** {tag}
 
 ---
 
@@ -271,12 +281,15 @@ Keep each bullet under 60 characters. Be specific and interesting."""
 
 *Agent Lab - Build. Experiment. Automate.*
 """
+            # DB用にサマリー文字列を構築
+            db_summary = f"{benefit} | Reason: {reason}"
+
             # STEP 7: 共通基盤による自動保存・Manifest登録・YAML付与
             log_path = self.save_experiment(
                 experiment_title=f"GitHub Trending: {selected['name']}",
                 content_markdown=content_md,
                 agent_data=selected,
-                summary=summary
+                summary=db_summary
             )
             
             if HAS_RICH:
