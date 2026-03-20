@@ -17,7 +17,7 @@
   <header class="header" id="header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <img src="/assets/logo.png" alt="Agent Lab Logo" class="logo-img">
+        <canvas id="logo-torii" style="image-rendering:pixelated;width:32px;height:27px;vertical-align:middle;"></canvas>
         <span class="logo-text">Agent <span class="accent">Lab</span></span>
       </a>
       <nav class="nav" id="nav">
@@ -212,7 +212,7 @@ if(container) {
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">
-        <img src="/assets/logo.png" alt="Agent Lab" class="footer-logo-img">
+        <canvas id="footer-torii" style="image-rendering:pixelated;width:28px;height:23px;vertical-align:middle;"></canvas>
         <span class="footer-logo-text">Agent Lab</span>
       </div>
       <p class="footer-copy">Build. Experiment. Automate.</p>
@@ -221,5 +221,45 @@ if(container) {
   </footer>
 
   <script src="/assets/script.js"></script>
+  <script>
+  (function(){
+    function drawTorii(ctx) {
+      const RED = "#E8404A", DARK = "#8B1a1a";
+      function fill(x,y,w,h,col){ctx.fillStyle=col;ctx.fillRect(x,y,w,h);}
+      fill(0,1,24,2,RED);
+      fill(1,3,22,1,RED);
+      fill(3,0,18,1,DARK);
+      fill(4,4,3,14,RED);
+      fill(17,4,3,14,RED);
+      fill(4,10,16,2,RED);
+      fill(3,17,4,2,DARK);
+      fill(17,17,4,2,DARK);
+    }
+
+    function setupCanvas(id) {
+      const c = document.getElementById(id);
+      if(!c) return;
+      c.width = 24; c.height = 20;
+      drawTorii(c.getContext("2d"));
+    }
+
+    setupCanvas("logo-torii");
+    setupCanvas("footer-torii");
+
+    const fav = document.createElement("canvas");
+    fav.width = 32; fav.height = 32;
+    const favCtx = fav.getContext("2d");
+    favCtx.imageSmoothingEnabled = false;
+    const tmp = document.createElement("canvas");
+    tmp.width = 24; tmp.height = 20;
+    drawTorii(tmp.getContext("2d"));
+    favCtx.drawImage(tmp, 4, 6, 24, 20);
+    const link = document.querySelector("link[rel*='icon']") || document.createElement("link");
+    link.type = "image/x-icon";
+    link.rel = "shortcut icon";
+    link.href = fav.toDataURL();
+    document.head.appendChild(link);
+  })();
+  </script>
 </body>
 </html>
