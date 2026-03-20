@@ -144,7 +144,26 @@ class GitHubHunterAgent(AgentBase):
         try:
             import anthropic
             client = anthropic.Anthropic(api_key=api_key)
-            prompt = f"""You are an AI assistant helping to summarize GitHub repositories for a tech media called 'Agent Lab'.
+            prompt = f"""You are a technical writer for 'Agent Lab', an AI agent discovery platform.
+
+Repository: {repo['full_name']}
+Description: {repo.get('description', 'No description')}
+Stars: {repo.get('stars', 0)}
+Language: {repo.get('language', 'Unknown')}
+README (excerpt):
+{readme}
+
+Write EXACTLY 3 bullet points in ENGLISH. Be SPECIFIC and TECHNICAL.
+- Bullet 1: What it does (use concrete technical terms)
+- Bullet 2: The specific problem it solves (mention real use cases)
+- Bullet 3: Who benefits most (be specific: 'RAG pipeline developers' not 'developers')
+- NEVER use vague phrases like 'great for', 'useful for', 'helps you'
+- Each bullet under 80 characters
+
+Format:
+- [bullet 1]
+- [bullet 2]
+- [bullet 3]
 
 Repository: {repo['full_name']}
 Description: {repo.get('description', 'No description')}

@@ -5,6 +5,34 @@
   <link>https://agentlab.example.com</link>
   <description>The Ultimate AI Agent Discovery Platform</description>
   <item>
+    <title>Experiment #013: superpowers</title>
+    <link>https://agentlab.example.com/experiments/013.html</link>
+    <description>- Composable skills framework automating spec→design→implementation workflows for AI coding agents
+- Enforces TDD, YAGNI, DRY principles; enables multi-hour autonomous agent task execution without plan deviation
+- AI engineers, agentic development teams building production-grade software with Claude, Cursor, Codex agents</description>
+  </item>
+  <item>
+    <title>Experiment #012: open-swe</title>
+    <link>https://agentlab.example.com/experiments/012.html</link>
+    <description>- Builds internal coding agents with LangGraph/Deep Agents framework composable architecture
+- Enables sandbox execution, Slack/Linear integration, and autonomous PR generation for engineering teams
+- Platform engineers customizing AI coding assistants for enterprise codebases and workflows</description>
+  </item>
+  <item>
+    <title>Experiment #011: claude-hud</title>
+    <link>https://agentlab.example.com/experiments/011.html</link>
+    <description>- Displays context window usage, active tools, agents, and todo progress in Claude Code's statusline
+- Prevents context overflow by showing real token counts and consumption rates before hitting limits
+- Claude Code users managing complex multi-agent workflows requiring visibility into resource utilization</description>
+  </item>
+  <item>
+    <title>Experiment #010: claude-hud</title>
+    <link>https://agentlab.example.com/experiments/010.html</link>
+    <description>- Renders real-time context usage, tool activity, and agent status in Claude Code's statusline
+- Prevents context window overflow by displaying native token metrics and consumption rates
+- Claude Code power users managing complex multi-agent workflows and long sessions</description>
+  </item>
+  <item>
     <title>Experiment #009: opendataloader-pdf</title>
     <link>https://agentlab.example.com/experiments/009.html</link>
     <description>- Extracts structured data (Markdown, JSON, HTML) from PDFs with #1 benchmark accuracy (0.90)
@@ -16,30 +44,6 @@
     <link>https://agentlab.example.com/experiments/008.html</link>
     <description>（要約エラー: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-haiku-20241022'}, 'request_id': 'req_011CZEAT7fxiWxqccANASYy9'}）
 説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
-  </item>
-  <item>
-    <title>Experiment #007: opendataloader-pdf</title>
-    <link>https://agentlab.example.com/experiments/007.html</link>
-    <description>（要約エラー: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZE9no4ihm1B5QAG8dpEv'}）
-説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
-  </item>
-  <item>
-    <title>Experiment #006: opendataloader-pdf</title>
-    <link>https://agentlab.example.com/experiments/006.html</link>
-    <description>（要約エラー: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZE5Vhxwc1e2th9JL99XT'}）
-説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
-  </item>
-  <item>
-    <title>Experiment #005: superpowers</title>
-    <link>https://agentlab.example.com/experiments/005.html</link>
-    <description>（要約スキップ: ANTHROPIC_API_KEYが未設定）
-説明: An agentic skills framework & software development methodology that works.</description>
-  </item>
-  <item>
-    <title>Experiment #004: open-swe</title>
-    <link>https://agentlab.example.com/experiments/004.html</link>
-    <description>（要約スキップ: ANTHROPIC_API_KEYが未設定）
-説明: An Open-Source Asynchronous Coding Agent</description>
   </item>
 </channel>
 </rss>
