@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
+{% block extra_head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+{% endblock %}
+
 {% block content %}
 <section class="hero" id="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="container hero-content">
+    <div class="pixel-logo" id="pixelLogo"></div>
     <div class="terminal-badge" id="terminal-badge">
       <span class="terminal-prompt">$</span>
       <span class="terminal-text" id="terminal-text">agentlab discover</span>
@@ -95,4 +100,82 @@
     </div>
   </div>
 </section>
+
+<script>
+const LETTERS = {
+  A:[[0,1],[0,2],[1,0],[1,3],[2,0],[2,1],[2,2],[2,3],[3,0],[3,3],[4,0],[4,3]],
+  G:[[0,1],[0,2],[0,3],[1,0],[2,0],[2,2],[2,3],[3,0],[3,3],[4,1],[4,2],[4,3]],
+  E:[[0,0],[0,1],[0,2],[0,3],[1,0],[2,0],[2,1],[2,2],[3,0],[4,0],[4,1],[4,2],[4,3]],
+  N:[[0,0],[0,3],[1,0],[1,1],[1,3],[2,0],[2,2],[2,3],[3,0],[3,3],[4,0],[4,3]],
+  T:[[0,0],[0,1],[0,2],[0,3],[1,1],[2,1],[3,1],[4,1]],
+  L:[[0,0],[1,0],[2,0],[3,0],[4,0],[4,1],[4,2],[4,3]],
+  B:[[0,0],[0,1],[0,2],[1,0],[1,3],[2,0],[2,1],[2,2],[3,0],[3,3],[4,0],[4,1],[4,2]],
+};
+const PS = 7, GAP = 3;
+const LW = 4 * PS + GAP;
+const COLORS_1 = ["#378ADD","#185FA5","#85B7EB"];
+const COLORS_2 = ["#1D9E75","#0F6E56","#5DCAA5"];
+
+const container = document.getElementById("pixelLogo");
+if(container) {
+  const words = ["AGENT","LAB"];
+  const allCells = [];
+
+  words.forEach((word, wi) => {
+    const totalW = word.length * LW;
+    const startX = Math.max(0, (container.offsetWidth - totalW) / 2);
+    const startY = wi * (5 * PS + 16);
+
+    word.split("").forEach((ch, li) => {
+      const pts = LETTERS[ch];
+      if(!pts) return;
+      pts.forEach((pt, ri) => {
+        const el = document.createElement("div");
+        const tx = startX + li * LW + pt[1] * PS;
+        const ty = startY + pt[0] * PS;
+        const colors = wi === 0 ? COLORS_1 : COLORS_2;
+        el.style.cssText = `position:absolute;width:${PS}px;height:${PS}px;left:${tx}px;top:${ty}px;background:${colors[ri%colors.length]};border-radius:1px;`;
+        container.appendChild(el);
+        allCells.push(el);
+      });
+    });
+  });
+
+  container.style.cssText = `position:relative;width:100%;height:${2*(5*PS+16)+5*PS}px;margin-bottom:2rem;`;
+
+  gsap.set(allCells, {
+    opacity:0, scale:0,
+    x:()=>(Math.random()-0.5)*400,
+    y:()=>(Math.random()-0.5)*300,
+  });
+
+  gsap.to(allCells, {
+    opacity:1, scale:1, x:0, y:0,
+    duration:1.6,
+    ease:"expo.out",
+    stagger:{amount:1.4, from:"center"},
+    delay:0.3,
+  });
+
+  container.addEventListener("mousemove", e => {
+    const rect = container.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    allCells.forEach(el => {
+      const ex = parseFloat(el.style.left) + PS/2;
+      const ey = parseFloat(el.style.top) + PS/2;
+      const dx = mx - ex, dy = my - ey;
+      const dist = Math.sqrt(dx*dx+dy*dy);
+      if(dist < 60) {
+        const f = (60-dist)/60;
+        gsap.to(el, {x:-dx*f*0.5, y:-dy*f*0.5, duration:0.3, ease:"power2.out", overwrite:"auto"});
+      }
+    });
+  });
+
+  container.addEventListener("mouseleave", () => {
+    gsap.to(allCells, {x:0, y:0, duration:1.2, ease:"elastic.out(1,0.35)", stagger:0.01});
+  });
+}
+</script>
 {% endblock %}

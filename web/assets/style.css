@@ -960,3 +960,8 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
+.pixel-logo {
+  margin: 0 auto 1.5rem;
+  max-width: 400px;
+}
