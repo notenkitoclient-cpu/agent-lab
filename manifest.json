@@ -25,6 +25,30 @@
       "date": "2026-03-20",
       "status": "complete",
       "file": "experiments/002_github_hunter.md"
+    },
+    {
+      "id": "003",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: opendataloader-pdf",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/003_github_hunter.md"
+    },
+    {
+      "id": "004",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: open-swe",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/004_github_hunter.md"
+    },
+    {
+      "id": "005",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: superpowers",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/005_github_hunter.md"
     }
   ]
 }

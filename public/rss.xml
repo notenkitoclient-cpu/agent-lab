@@ -5,6 +5,24 @@
   <link>https://agentlab.example.com</link>
   <description>The Ultimate AI Agent Discovery Platform</description>
   <item>
+    <title>Experiment #005: superpowers</title>
+    <link>https://agentlab.example.com/experiments/005.html</link>
+    <description>（要約スキップ: ANTHROPIC_API_KEYが未設定）
+説明: An agentic skills framework & software development methodology that works.</description>
+  </item>
+  <item>
+    <title>Experiment #004: open-swe</title>
+    <link>https://agentlab.example.com/experiments/004.html</link>
+    <description>（要約スキップ: ANTHROPIC_API_KEYが未設定）
+説明: An Open-Source Asynchronous Coding Agent</description>
+  </item>
+  <item>
+    <title>Experiment #003: opendataloader-pdf</title>
+    <link>https://agentlab.example.com/experiments/003.html</link>
+    <description>（要約スキップ: ANTHROPIC_API_KEYが未設定）
+説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
+  </item>
+  <item>
     <title>Experiment #002: opendataloader-pdf</title>
     <link>https://agentlab.example.com/experiments/002.html</link>
     <description>- PDF Parser for AI-ready data. Automate PDF accessi
