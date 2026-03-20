@@ -5,41 +5,33 @@
   <link>https://agentlab.example.com</link>
   <description>The Ultimate AI Agent Discovery Platform</description>
   <item>
-    <title>Experiment #009: opendataloader-pdf</title>
-    <link>https://agentlab.example.com/experiments/009.html</link>
-    <description>- Extracts structured data (Markdown, JSON, HTML) from PDFs with #1 benchmark accuracy (0.90)
-- Automates PDF accessibility compliance via auto-tagging to Tagged PDF/PDF/UA standards
-- For developers building RAG/LLM pipelines and accessibility-focused applications</description>
-  </item>
-  <item>
-    <title>Experiment #008: opendataloader-pdf</title>
-    <link>https://agentlab.example.com/experiments/008.html</link>
-    <description>（要約エラー: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-haiku-20241022'}, 'request_id': 'req_011CZEAT7fxiWxqccANASYy9'}）
-説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
-  </item>
-  <item>
-    <title>Experiment #007: opendataloader-pdf</title>
-    <link>https://agentlab.example.com/experiments/007.html</link>
-    <description>（要約エラー: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZE9no4ihm1B5QAG8dpEv'}）
-説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
-  </item>
-  <item>
     <title>Experiment #006: opendataloader-pdf</title>
     <link>https://agentlab.example.com/experiments/006.html</link>
-    <description>（要約エラー: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZE5Vhxwc1e2th9JL99XT'}）
-説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
+    <description>A powerful PDF Parser for AI-ready data aimed at automating PDF accessibility and open-source availability.</description>
   </item>
   <item>
     <title>Experiment #005: superpowers</title>
     <link>https://agentlab.example.com/experiments/005.html</link>
-    <description>（要約スキップ: ANTHROPIC_API_KEYが未設定）
-説明: An agentic skills framework & software development methodology that works.</description>
+    <description>An agentic skills framework and software development methodology that works effectively.</description>
   </item>
   <item>
     <title>Experiment #004: open-swe</title>
     <link>https://agentlab.example.com/experiments/004.html</link>
     <description>（要約スキップ: ANTHROPIC_API_KEYが未設定）
 説明: An Open-Source Asynchronous Coding Agent</description>
+  </item>
+  <item>
+    <title>Experiment #003: opendataloader-pdf</title>
+    <link>https://agentlab.example.com/experiments/003.html</link>
+    <description>（要約スキップ: ANTHROPIC_API_KEYが未設定）
+説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
+  </item>
+  <item>
+    <title>Experiment #002: opendataloader-pdf</title>
+    <link>https://agentlab.example.com/experiments/002.html</link>
+    <description>- PDF Parser for AI-ready data. Automate PDF accessi
+- Trending rapidly on GitHub
+- Great for developers and researchers</description>
   </item>
 </channel>
 </rss>
