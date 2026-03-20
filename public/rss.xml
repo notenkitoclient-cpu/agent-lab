@@ -5,6 +5,11 @@
   <link>https://agentlab.example.com</link>
   <description>The Ultimate AI Agent Discovery Platform</description>
   <item>
+    <title>Experiment #010: claude-hud</title>
+    <link>https://agentlab.example.com/experiments/010.html</link>
+    <description>Great for developers and researchers | Reason: We picked this because it's trending rapidly.</description>
+  </item>
+  <item>
     <title>Experiment #006: opendataloader-pdf</title>
     <link>https://agentlab.example.com/experiments/006.html</link>
     <description>A powerful PDF Parser for AI-ready data aimed at automating PDF accessibility and open-source availability.</description>
