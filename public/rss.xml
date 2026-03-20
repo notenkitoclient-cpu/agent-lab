@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>Agent Lab</title>
+  <link>https://agentlab.example.com</link>
+  <description>The Ultimate AI Agent Discovery Platform</description>
+  <item>
+    <title>Experiment #002: opendataloader-pdf</title>
+    <link>https://agentlab.example.com/experiments/002.html</link>
+    <description>- PDF Parser for AI-ready data. Automate PDF accessi
+- Trending rapidly on GitHub
+- Great for developers and researchers</description>
+  </item>
+</channel>
+</rss>

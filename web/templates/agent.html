@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{ agent.name }} - Agent Lab{% endblock %}
+{% block description %}Discover {{ agent.name }} on Agent Lab: {{ agent.description[:100] }}{% endblock %}
+
+{% block content %}
+<section class="agent-detail" style="padding: 100px 0 50px 0;">
+  <div class="container">
+    <div style="margin-bottom: 2rem;">
+      <a href="/" style="color: #94a3b8; text-decoration: none;">← Back to Home</a>
+    </div>
+    
+    <div style="background: rgba(10,15,36,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem;">
+      <h1 style="font-size: 3rem; margin-bottom: 0.5rem; color: #fff;">{{ agent.name }}</h1>
+      <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 2rem;">{{ agent.description }}</p>
+      
+      <div style="display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+        <div><strong style="color: #fff;">⭐ Stars:</strong> {{ agent.stars }}</div>
+        <div><strong style="color: #fff;">🍴 Forks:</strong> {{ agent.forks }}</div>
+        <div><strong style="color: #fff;">🖥 Language:</strong> {{ agent.language }}</div>
+        <div><strong style="color: #fff;">📈 Growth Score:</strong> {{ "%.1f"|format(agent.growth_score) }}</div>
+      </div>
+      
+      <div style="margin-bottom: 2rem;">
+        <strong style="color: #fff;">Topics:</strong> 
+        {% for topic in agent.topics.split(',') %}
+          <span class="tag" style="margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">{{ topic.strip() }}</span>
+        {% endfor %}
+      </div>
+      
+      <a href="{{ agent.github_url }}" target="_blank" class="btn btn--primary">View on GitHub</a>
+    </div>
+
+    {% if experiments %}
+    <h2 style="margin-top: 4rem; margin-bottom: 2rem;">Related Experiments</h2>
+    <div class="experiments-grid">
+      {% for exp in experiments %}
+      <article class="exp-card" style="border: 1px solid rgba(255,255,255,0.1);">
+        <h3 class="exp-title">{{ exp.title }}</h3>
+        <p class="exp-desc">{{ exp.summary }}</p>
+        <div style="margin-top: 1rem;"><a href="/experiments/{{ exp.id }}.html" class="exp-link">Read Log →</a></div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

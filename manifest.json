@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "agents": [
+    {
+      "id": "github-hunter",
+      "name": "Github Hunter",
+      "description": "GitHub Trendingを監視してAIツールを発掘・要約する",
+      "status": "active",
+      "version": "1.0.0"
+    }
+  ],
+  "experiments": [
+    {
+      "id": "001",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: opendataloader-pdf",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/001_github_hunter.md"
+    },
+    {
+      "id": "002",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: opendataloader-pdf",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/002_github_hunter.md"
+    }
+  ]
+}

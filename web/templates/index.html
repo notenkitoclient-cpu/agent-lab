@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <div class="terminal-badge" id="terminal-badge">
+      <span class="terminal-prompt">$</span>
+      <span class="terminal-text" id="terminal-text">agentlab discover</span>
+      <span class="terminal-cursor">▋</span>
+    </div>
+    <h1 class="hero-title">
+      Discover.<br>
+      <span class="accent glow-text">Experiment.</span><br>
+      Automate.
+    </h1>
+    <p class="hero-subtitle">
+      The Ultimate AI Agent Discovery Platform.<br>
+      We hunt, build and track the best AI agents in the world.
+    </p>
+    <div class="hero-cta">
+      <a href="#trending" class="btn btn--primary">
+        <span class="btn-icon">🔥</span> Explore Trending Agents
+      </a>
+      <a href="https://x.com" target="_blank" class="btn btn--outline">
+        <span class="btn-icon">𝕏</span> Follow Updates
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-value">{{ "{:03d}".format(total_experiments) }}</span>
+        <span class="stat-label">Experiments</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-value">{{ total_agents }}</span>
+        <span class="stat-label">Agents Discovered</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trending Agents -->
+<section class="agents" id="trending">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// trending</span>
+      <h2 class="section-title">Fastest Growing AI Agents</h2>
+      <p class="section-subtitle">Top AI agents tracked by our database.</p>
+    </div>
+    <div class="agents-grid">
+      {% for agent in top_agents %}
+      <a href="/agents/{{ agent.slug }}.html" class="agent-card active" style="text-decoration: none; color: inherit;">
+        <div class="agent-status" style="color: #4ade80;">⭐ {{ agent.stars }} Stars</div>
+        <div class="agent-icon">🤖</div>
+        <h4 class="agent-name">{{ agent.name }}</h4>
+        <p class="agent-role">{{ agent.description[:60] }}...</p>
+        <div style="margin-top: 10px; font-size: 0.8rem; color: #94a3b8;">
+          🔥 Score: {{ "%.1f"|format(agent.growth_score) }} / Topics: {%- if agent.topics -%}{{ agent.topics.split(',')[0] }}{%- else -%}AI{%- endif -%}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Latest Experiments -->
+<section class="experiments" id="experiments">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// experiments</span>
+      <h2 class="section-title">Latest Lab Experiments</h2>
+      <p class="section-subtitle">Our hands-on deep dives into AI agents.</p>
+    </div>
+    <div class="experiments-grid" id="experiments-grid">
+      {% for exp in latest_experiments %}
+      <article class="exp-card exp-card--featured" id="exp-{{ exp.id }}">
+        <div class="exp-card-header">
+          <span class="exp-number">#{{ exp.id }}</span>
+          <span class="exp-badge exp-badge--live">● LOGGED</span>
+        </div>
+        <h3 class="exp-title">{{ exp.title }}</h3>
+        <p class="exp-desc">
+          {{ exp.summary }}
+        </p>
+        <div class="exp-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+          <span class="exp-date" style="color: #94a3b8;">{{ exp.created_at }}</span>
+          <a href="/experiments/{{ exp.id }}.html" class="btn btn--primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">View Log →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

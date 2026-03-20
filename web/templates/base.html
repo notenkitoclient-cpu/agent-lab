@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block description %}Agent Lab - Build. Experiment. Automate. AI Agents Discovery Platform.{% endblock %}">
+  <title>{% block title %}Agent Lab - AI Agents Discovery Platform{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <img src="/assets/logo.png" alt="Agent Lab Logo" class="logo-img">
+        <span class="logo-text">Agent <span class="accent">Lab</span></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="https://x.com" target="_blank" class="nav-link nav-link--x">𝕏 Follow</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <img src="/assets/logo.png" alt="Agent Lab" class="footer-logo-img">
+        <span class="footer-logo-text">Agent Lab</span>
+      </div>
+      <p class="footer-copy">Build. Experiment. Automate.</p>
+      <p class="footer-copy footer-copy--small">© 2026 Agent Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/assets/script.js"></script>
+</body>
+</html>
