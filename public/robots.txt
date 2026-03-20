@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://agentlab.example.com/sitemap.xml

@@ -21,7 +21,7 @@ status: complete
 
 ## AI Summary
 
-（要約エラー: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-haiku-20241022'}, 'request_id': 'req_011CZEAT7fxiWxqccANASYy9'}）
+PDF parser for AI-ready data. Automates PDF accessibility and data extraction for RAG/LLM pipelines.
 説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 
 ---
@@ -36,7 +36,7 @@ Discovered an interesting AI tool 👀
 Tool: opendataloader-pdf
 
 What it does:
-（要約エラー: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-5-haiku-20241022'}, 'request_id': 'req_011CZEAT7fxiWxqccANASYy9'}）
+PDF parser for AI-ready data. Automates PDF accessibility and data extraction for RAG/LLM pipelines.
 説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 
 ⭐ 6470 stars

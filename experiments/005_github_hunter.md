@@ -21,7 +21,7 @@ status: complete
 
 ## AI Summary
 
-（要約スキップ: ANTHROPIC_API_KEYが未設定）
+An agentic skills framework and software development methodology.
 説明: An agentic skills framework & software development methodology that works.
 
 ---
@@ -36,7 +36,7 @@ Discovered an interesting AI tool 👀
 Tool: superpowers
 
 What it does:
-（要約スキップ: ANTHROPIC_API_KEYが未設定）
+An agentic skills framework and software development methodology.
 説明: An agentic skills framework & software development methodology that works.
 
 ⭐ 100275 stars

@@ -21,7 +21,7 @@ status: complete
 
 ## AI Summary
 
-（要約エラー: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZE5Vhxwc1e2th9JL99XT'}）
+PDF parser for AI-ready data. Automates PDF accessibility and data extraction for RAG/LLM pipelines.
 説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 
 ---
@@ -36,7 +36,7 @@ Discovered an interesting AI tool 👀
 Tool: opendataloader-pdf
 
 What it does:
-（要約エラー: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZE5Vhxwc1e2th9JL99XT'}）
+PDF parser for AI-ready data. Automates PDF accessibility and data extraction for RAG/LLM pipelines.
 説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 
 ⭐ 6395 stars
