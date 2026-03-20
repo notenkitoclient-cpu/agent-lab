@@ -21,8 +21,7 @@ status: complete
 
 ## AI Summary
 
-（要約スキップ: ANTHROPIC_API_KEYが未設定）
-説明: An Open-Source Asynchronous Coding Agent
+An Open-Source Asynchronous Coding Agent
 
 ---
 
@@ -36,8 +35,7 @@ Discovered an interesting AI tool 👀
 Tool: open-swe
 
 What it does:
-（要約スキップ: ANTHROPIC_API_KEYが未設定）
-説明: An Open-Source Asynchronous Coding Agent
+An Open-Source Asynchronous Coding Agent
 
 ⭐ 7291 stars
 🔗 Repo: https://github.com/langchain-ai/open-swe
