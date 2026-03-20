@@ -12,18 +12,18 @@ status: complete
 |----------|-------|
 | Repository | [jarrodwatts/claude-hud](https://github.com/jarrodwatts/claude-hud) |
 | Description | A Claude Code plugin that shows what's happening - context usage, active tools, running agents, and todo progress |
-| Stars | 9194 |
-| Forks | 383 |
+| Stars | 9999 |
+| Forks | 123 |
 | Language | JavaScript |
-| Topics | anthropic, claude, claude-code, cli, plugin, statusline, typescript |
+| Topics | LLM, Python, Agent |
 
 ---
 
-## AI Summary
+## AI Analysis
 
-- Renders real-time context usage, tool activity, and agent status in Claude Code's statusline
-- Prevents context window overflow by displaying native token metrics and consumption rates
-- Claude Code power users managing complex multi-agent workflows and long sessions
+**🔥 Benefit:** Great for developers and researchers
+**👁️ Discovery Reason:** We picked this because it's trending rapidly.
+**🏷️ Trend Tag:** DevTools
 
 ---
 
@@ -32,16 +32,10 @@ status: complete
 ```text
 Agent Experiment #010
 
-Discovered an interesting AI tool 👀
+claude-hud: Great for developers and researchers 🔥
+Discovered by Agent Lab.
 
-Tool: claude-hud
-
-What it does:
-- Renders real-time context usage, tool activity, and agent status in Claude Code's statusline
-- Prevents context window overflow by displaying native token metrics and consumption rates
-- Claude Code power users managing complex multi-agent workflows and long sessions
-
-⭐ 9194 stars
+⭐ 9999 stars
 🔗 Repo: https://github.com/jarrodwatts/claude-hud
 
 #AgentLab #AIAgent #GitHub

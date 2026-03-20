@@ -94,25 +94,9 @@
       "id": "011",
       "agent_id": "github-hunter",
       "title": "GitHub Trending: claude-hud",
-      "date": "2026-03-21",
+      "date": "2026-03-20",
       "status": "complete",
       "file": "experiments/011_github_hunter.md"
-    },
-    {
-      "id": "012",
-      "agent_id": "github-hunter",
-      "title": "GitHub Trending: open-swe",
-      "date": "2026-03-21",
-      "status": "complete",
-      "file": "experiments/012_github_hunter.md"
-    },
-    {
-      "id": "013",
-      "agent_id": "github-hunter",
-      "title": "GitHub Trending: superpowers",
-      "date": "2026-03-21",
-      "status": "complete",
-      "file": "experiments/013_github_hunter.md"
     }
   ]
 }

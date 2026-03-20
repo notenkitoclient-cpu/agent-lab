@@ -21,8 +21,7 @@ status: complete
 
 ## AI Summary
 
-（要約スキップ: ANTHROPIC_API_KEYが未設定）
-説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
+PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 
 ---
 
@@ -36,8 +35,7 @@ Discovered an interesting AI tool 👀
 Tool: opendataloader-pdf
 
 What it does:
-（要約スキップ: ANTHROPIC_API_KEYが未設定）
-説明: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
+PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 
 ⭐ 6353 stars
 🔗 Repo: https://github.com/opendataloader-project/opendataloader-pdf

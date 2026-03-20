@@ -208,6 +208,71 @@ def list_agents():
     console.print(table)
 
 
+def generate_weekly_report():
+    """過去7日間のデータを集計してWeekly ReportのMarkdownファイルを生成する"""
+    import datetime
+    log("📊 Generating Weekly Agent Report...", "bold cyan")
+    
+    try:
+        conn = sqlite3.connect(DATABASE_PATH)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        
+        # 直近7日間のデータを取得
+        cur.execute("""
+            SELECT name, description, github_url, stars, topics
+            FROM agents 
+            WHERE created_at >= date('now', '-7 days')
+               OR discovered_at >= date('now', '-7 days')
+            ORDER BY stars DESC
+        """)
+        recent_agents = [dict(row) for row in cur.fetchall()]
+        conn.close()
+        
+        if not recent_agents:
+            log("⚠️ No new agents found in the last 7 days.", "yellow")
+            return
+            
+        date_str = datetime.datetime.now().strftime("%Y-%m-%d")
+        
+        # 仮のトレンド判定ロジック（一番多いタグ）
+        all_topics = []
+        for a in recent_agents:
+            all_topics.extend([t.strip() for t in a.get('topics', '').split(',') if t.strip()])
+        
+        from collections import Counter
+        top_topic = Counter(all_topics).most_common(1)[0][0] if all_topics else "AI Gen"
+        
+        content = f"""---
+title: "Weekly Agent Report: {date_str}"
+date: {date_str}
+type: report
+---
+
+# 🚀 Weekly Agent Report ({date_str})
+
+**今週のトレンド：{top_topic}**
+
+今週 Agent Lab が発掘した注目のAIエージェント・ツールリストです。
+
+"""
+        for a in recent_agents:
+            content += f"### [{a['name']}]({a['github_url']})\n"
+            content += f"- **Stars**: ⭐ {a['stars']}\n"
+            content += f"- **Topics**: `{a['topics']}`\n"
+            content += f"- **Description**: {a['description']}\n\n"
+            
+        reports_dir = PROJECT_ROOT / "reports"
+        reports_dir.mkdir(exist_ok=True)
+        report_path = reports_dir / f"weekly_{date_str}.md"
+        
+        report_path.write_text(content, encoding="utf-8")
+        log(f"✅ Generated Weekly Report at {report_path}", "bold green")
+        
+    except Exception as e:
+        log(f"❌ Error generating Weekly Report: {e}", "bold red")
+
+
 def list_experiments():
     """完了した実験一覧を表示"""
     if not MANIFEST_PATH.exists():
@@ -262,6 +327,10 @@ def main():
     list_parser = subparsers.add_parser("list", help="List registered resources")
     list_parser.add_argument("resource", choices=["agents", "experiments"], help="Resource to list")
     
+    # report コマンド
+    report_parser = subparsers.add_parser("report", help="Generate a report")
+    report_parser.add_argument("type", choices=["weekly"], help="Type of report to generate")
+
     # build コマンド
     subparsers.add_parser("build", help="Build static site from SQLite to public directory")
     
@@ -302,6 +371,10 @@ def main():
             list_agents()
         elif args.resource == "experiments":
             list_experiments()
+            
+    elif args.command == "report":
+        if args.type == "weekly":
+            generate_weekly_report()
             
     elif args.command == "build":
         build_site()

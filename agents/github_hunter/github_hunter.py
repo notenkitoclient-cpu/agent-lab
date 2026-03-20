@@ -144,48 +144,29 @@ class GitHubHunterAgent(AgentBase):
         try:
             import anthropic
             client = anthropic.Anthropic(api_key=api_key)
-            prompt = f"""You are a technical writer for 'Agent Lab', an AI agent discovery platform.
-
-Repository: {repo['full_name']}
-Description: {repo.get('description', 'No description')}
-Stars: {repo.get('stars', 0)}
-Language: {repo.get('language', 'Unknown')}
-README (excerpt):
-{readme}
-
-Write EXACTLY 3 bullet points in ENGLISH. Be SPECIFIC and TECHNICAL.
-- Bullet 1: What it does (use concrete technical terms)
-- Bullet 2: The specific problem it solves (mention real use cases)
-- Bullet 3: Who benefits most (be specific: 'RAG pipeline developers' not 'developers')
-- NEVER use vague phrases like 'great for', 'useful for', 'helps you'
-- Each bullet under 80 characters
-
-Format:
-- [bullet 1]
-- [bullet 2]
-- [bullet 3]
+            prompt = f"""You are an AI assistant helping to curate GitHub repositories for a tech media called 'Agent Lab'.
 
 Repository: {repo['full_name']}
 Description: {repo.get('description', 'No description')}
 README (excerpt):
 {readme}
 
-Summarize this repository in EXACTLY 3 bullet points in ENGLISH.
-Focus on:
-- What it does
-- Why it is useful / What problem it solves
-- Who should use it
+Analyze this repository and provide the following 4 pieces of information. Do not include extra text.
 
-Format:
-- [bullet 1]
-- [bullet 2]
-- [bullet 3]
+1. ONE-LINE BENEFIT (English): A punchy sentence on the user benefit. Under 60 characters.
+2. DISCOVERY REASON (English): Briefly explain from an AI Agent perspective why this tool is relevant NOW.
+3. TREND TAG: Pick exactly ONE tag from: [LLM, AI, Agents, Automation, Machine Learning, Deep Learning, NLP, RAG, DevTools, Coding Agent]
+4. JAPANESE SUMMARY: 日本語で2〜3文で要約してください。「何ができるツールか」「なぜ今注目なのか」を中心に書いてください。SEO向けに自然な日本語で書いてください。
 
-Keep each bullet under 60 characters. Be specific and interesting."""
+Format your response EXACTLY like this:
+Benefit: [English one-line benefit]
+Reason: [English discovery reason]
+Tag: [One tag from the list]
+JaSummary: [日本語の2〜3文要約]"""
 
             message = client.messages.create(
                 model="claude-haiku-4-5-20251001",
-                max_tokens=300,
+                max_tokens=500,
                 messages=[{"role": "user", "content": prompt}]
             )
             return message.content[0].text.strip()
@@ -195,10 +176,9 @@ Keep each bullet under 60 characters. Be specific and interesting."""
         except Exception as e:
             return f"（要約エラー: {e}）\n説明: {repo.get('description', 'なし')}"
 
-    def generate_x_post(self, repo: dict, summary: str, exp_id: str) -> str:
-        """X投稿文を生成"""
-        desc = repo.get('description', '')
-        return f"Agent Experiment #{exp_id}\n\nDiscovered an interesting AI tool 👀\n\nTool: {repo['name']}\n\nWhat it does:\n{summary}\n\n⭐ {repo['stars']} stars\n🔗 Repo: {repo['url']}\n\n#AgentLab #AIAgent #GitHub"
+    def generate_x_post(self, repo: dict, benefit: str, exp_id: str) -> str:
+        """X投稿文を生成（ベネフィットファースト）"""
+        return f"Agent Experiment #{exp_id}\n\n{repo['name']}: {benefit} 🔥\nDiscovered by Agent Lab.\n\n⭐ {repo['stars']} stars\n🔗 Repo: {repo['url']}\n\n#AgentLab #AIAgent #GitHub"
 
     def run(self, dry_run=False, language="", top=1, **kwargs):
         """エージェントのメイン処理（CLIから呼ばれる）"""
@@ -253,14 +233,26 @@ Keep each bullet under 60 characters. Be specific and interesting."""
             # STEP 4: Claude要約
             self.log("🧠 Generating summary with Claude...", "dim")
             if dry_run:
-                summary = f"- {selected.get('description', 'AI Tool')[:50]}\n- Trending rapidly on GitHub\n- Great for developers and researchers"
+                summary_raw = "Benefit: Great for developers and researchers\nReason: We picked this because it's trending rapidly.\nTag: DevTools\nJaSummary: 開発者向けの高速AIツールです。GitHub上で急速にスターを集めており、今注目のプロジェクトです。"
             else:
-                summary = self.summarize_with_claude(readme, selected)
+                summary_raw = self.summarize_with_claude(readme, selected)
+
+            # 解析
+            benefit = selected.get('description', 'AI Tool')[:50]
+            reason = ""
+            tag = "Other"
+            ja_summary = ""
+            
+            for line in summary_raw.split('\n'):
+                if line.startswith("Benefit:"): benefit = line.replace("Benefit:", "").strip()
+                elif line.startswith("Reason:"): reason = line.replace("Reason:", "").strip()
+                elif line.startswith("Tag:"): tag = line.replace("Tag:", "").strip()
+                elif line.startswith("JaSummary:"): ja_summary = line.replace("JaSummary:", "").strip()
 
             # STEP 5: X投稿文生成
-            x_post = self.generate_x_post(selected, summary, exp_id)
+            x_post = self.generate_x_post(selected, benefit, exp_id)
 
-            # STEP 6: Markdownレポジトリコンテンツ作成 (AgentBaseに渡す中身)
+            # STEP 6: Markdownレポジトリコンテンツ作成
             content_md = f"""## Discovered Repository
 
 | Property | Value |
@@ -274,9 +266,17 @@ Keep each bullet under 60 characters. Be specific and interesting."""
 
 ---
 
-## AI Summary
+## AI Analysis
 
-{summary}
+**🔥 Benefit (EN):** {benefit}
+**👁️ Discovery Reason:** {reason}
+**🏷️ Trend Tag:** {tag}
+
+---
+
+## 📘 日本語サマリー
+
+{ja_summary if ja_summary else '（日本語サマリーなし）'}
 
 ---
 
@@ -290,12 +290,15 @@ Keep each bullet under 60 characters. Be specific and interesting."""
 
 *Agent Lab - Build. Experiment. Automate.*
 """
+            # DB用にサマリー文字列を構築
+            db_summary = f"{benefit} | Reason: {reason}" + (f" | JA: {ja_summary}" if ja_summary else "")
+
             # STEP 7: 共通基盤による自動保存・Manifest登録・YAML付与
             log_path = self.save_experiment(
                 experiment_title=f"GitHub Trending: {selected['name']}",
                 content_markdown=content_md,
                 agent_data=selected,
-                summary=summary
+                summary=db_summary
             )
             
             if HAS_RICH:
