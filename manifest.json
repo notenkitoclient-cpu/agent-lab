@@ -49,6 +49,38 @@
       "date": "2026-03-20",
       "status": "complete",
       "file": "experiments/005_github_hunter.md"
+    },
+    {
+      "id": "006",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: opendataloader-pdf",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/006_github_hunter.md"
+    },
+    {
+      "id": "007",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: opendataloader-pdf",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/007_github_hunter.md"
+    },
+    {
+      "id": "008",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: opendataloader-pdf",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/008_github_hunter.md"
+    },
+    {
+      "id": "009",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: opendataloader-pdf",
+      "date": "2026-03-20",
+      "status": "complete",
+      "file": "experiments/009_github_hunter.md"
     }
   ]
 }
