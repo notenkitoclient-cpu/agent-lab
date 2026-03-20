@@ -5,6 +5,11 @@
   <link>https://agentlab.example.com</link>
   <description>The Ultimate AI Agent Discovery Platform</description>
   <item>
+    <title>Experiment #011: claude-hud</title>
+    <link>https://agentlab.example.com/experiments/011.html</link>
+    <description>Great for developers and researchers | Reason: We picked this because it's trending rapidly. | JA: 開発者向けの高速AIツールです。GitHub上で急速にスターを集めており、今注目のプロジェクトです。</description>
+  </item>
+  <item>
     <title>Experiment #010: claude-hud</title>
     <link>https://agentlab.example.com/experiments/010.html</link>
     <description>Great for developers and researchers | Reason: We picked this because it's trending rapidly.</description>
@@ -28,13 +33,6 @@
     <title>Experiment #003: opendataloader-pdf</title>
     <link>https://agentlab.example.com/experiments/003.html</link>
     <description>PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
-  </item>
-  <item>
-    <title>Experiment #002: opendataloader-pdf</title>
-    <link>https://agentlab.example.com/experiments/002.html</link>
-    <description>- PDF Parser for AI-ready data. Automate PDF accessi
-- Trending rapidly on GitHub
-- Great for developers and researchers</description>
   </item>
 </channel>
 </rss>

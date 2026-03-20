@@ -151,21 +151,22 @@ Description: {repo.get('description', 'No description')}
 README (excerpt):
 {readme}
 
-Analyze this repository and provide exactly 3 pieces of information in ENGLISH. Do not include extra text.
+Analyze this repository and provide the following 4 pieces of information. Do not include extra text.
 
-1. ONE-LINE BENEFIT: A single, punchy sentence focusing strictly on the user benefit (What problem does it solve for me?). Keep it under 60 characters.
-2. DISCOVERY REASON: Explain briefly from an AI Agent perspective why this tool is relevant NOW. (e.g., "RAG is becoming standard, and this simplifies parsing.")
-3. TREND TAG: Pick exactly ONE normalized tag that best describes this tool from the following list:
-[LLM, AI, Agents, Automation, Machine Learning, Deep Learning, NLP, RAG, DevTools, Coding Agent]
+1. ONE-LINE BENEFIT (English): A punchy sentence on the user benefit. Under 60 characters.
+2. DISCOVERY REASON (English): Briefly explain from an AI Agent perspective why this tool is relevant NOW.
+3. TREND TAG: Pick exactly ONE tag from: [LLM, AI, Agents, Automation, Machine Learning, Deep Learning, NLP, RAG, DevTools, Coding Agent]
+4. JAPANESE SUMMARY: 日本語で2〜3文で要約してください。「何ができるツールか」「なぜ今注目なのか」を中心に書いてください。SEO向けに自然な日本語で書いてください。
 
 Format your response EXACTLY like this:
-Benefit: [Your one-line benefit]
-Reason: [Your discovery reason]
-Tag: [Your chosen tag]"""
+Benefit: [English one-line benefit]
+Reason: [English discovery reason]
+Tag: [One tag from the list]
+JaSummary: [日本語の2〜3文要約]"""
 
             message = client.messages.create(
                 model="claude-haiku-4-5-20251001",
-                max_tokens=300,
+                max_tokens=500,
                 messages=[{"role": "user", "content": prompt}]
             )
             return message.content[0].text.strip()
@@ -232,7 +233,7 @@ Tag: [Your chosen tag]"""
             # STEP 4: Claude要約
             self.log("🧠 Generating summary with Claude...", "dim")
             if dry_run:
-                summary_raw = "Benefit: Great for developers and researchers\nReason: We picked this because it's trending rapidly.\nTag: DevTools"
+                summary_raw = "Benefit: Great for developers and researchers\nReason: We picked this because it's trending rapidly.\nTag: DevTools\nJaSummary: 開発者向けの高速AIツールです。GitHub上で急速にスターを集めており、今注目のプロジェクトです。"
             else:
                 summary_raw = self.summarize_with_claude(readme, selected)
 
@@ -240,11 +241,13 @@ Tag: [Your chosen tag]"""
             benefit = selected.get('description', 'AI Tool')[:50]
             reason = ""
             tag = "Other"
+            ja_summary = ""
             
             for line in summary_raw.split('\n'):
                 if line.startswith("Benefit:"): benefit = line.replace("Benefit:", "").strip()
                 elif line.startswith("Reason:"): reason = line.replace("Reason:", "").strip()
                 elif line.startswith("Tag:"): tag = line.replace("Tag:", "").strip()
+                elif line.startswith("JaSummary:"): ja_summary = line.replace("JaSummary:", "").strip()
 
             # STEP 5: X投稿文生成
             x_post = self.generate_x_post(selected, benefit, exp_id)
@@ -265,9 +268,15 @@ Tag: [Your chosen tag]"""
 
 ## AI Analysis
 
-**🔥 Benefit:** {benefit}
+**🔥 Benefit (EN):** {benefit}
 **👁️ Discovery Reason:** {reason}
 **🏷️ Trend Tag:** {tag}
+
+---
+
+## 📘 日本語サマリー
+
+{ja_summary if ja_summary else '（日本語サマリーなし）'}
 
 ---
 
@@ -282,7 +291,7 @@ Tag: [Your chosen tag]"""
 *Agent Lab - Build. Experiment. Automate.*
 """
             # DB用にサマリー文字列を構築
-            db_summary = f"{benefit} | Reason: {reason}"
+            db_summary = f"{benefit} | Reason: {reason}" + (f" | JA: {ja_summary}" if ja_summary else "")
 
             # STEP 7: 共通基盤による自動保存・Manifest登録・YAML付与
             log_path = self.save_experiment(
