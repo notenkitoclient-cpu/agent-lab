@@ -5,34 +5,40 @@
   <link>https://agentlab.example.com</link>
   <description>The Ultimate AI Agent Discovery Platform</description>
   <item>
+    <title>Experiment #014: opendataloader-pdf</title>
+    <link>https://agentlab.example.com/experiments/014.html</link>
+    <description>Extract structured data from PDFs for AI pipelines instantly. | Reason: Critical infrastructure for RAG systems and LLM pipelines requiring high-accuracy PDF parsing with deterministic output and bounding box metadata for context-aware retrieval. | JA: PDFから高精度でMarkdown・JSON・HTMLなどの構造化データを抽出し、LLMやRAGパイプラインに最適化したAI対応形式に自動変換するオープンソースツールです。ベンチマークで0.90の抽出精度を達成し、スキャン画像やテーブル、数式にも対応するため、企業のドキュメント処理自動化とAIシステム連携が今すぐ実現できます。</description>
+  </item>
+  <item>
+    <title>Experiment #013: superpowers</title>
+    <link>https://agentlab.example.com/experiments/013.html</link>
+    <description>Offline AI knowledge hub that works anywhere, anytime. | Reason: As AI agents increasingly need reliable, private access to knowledge bases and local LLMs without internet dependency, Project N.O.M.A.D. provides a production-ready framework combining Ollama (local LLM), RAG capabilities via Qdrant, and offline information libraries—essential infrastructure for autonomous agents operating in disconnected or privacy-sensitive environments. | JA: Project N.O.M.A.D.はOllama、Qdrant、Kiwixを統合したオフライン対応のAIナレッジハブで、インターネット接続なしで地元のLLMと知識ベースにアクセスできます。エージェント時代においてプライバシーと信頼性を重視するユーザーや組織にとって、完全自己完結型のAIインフラストラクチャを提供する点で注目されています。</description>
+  </item>
+  <item>
+    <title>Experiment #012: open-swe</title>
+    <link>https://agentlab.example.com/experiments/012.html</link>
+    <description>Scan containers, code, and infrastructure for vulnerabilities in seconds. | Reason: AI agents increasingly deploy containerized applications and infrastructure-as-code; Trivy enables automated security scanning across the entire deployment pipeline, making it essential for agent-driven DevOps workflows. | JA: Trivyは、コンテナイメージ、ファイルシステム、Kubernetesなど複数の対象から脆弱性、設定ミス、シークレット情報を自動検出する総合的なセキュリティスキャナーです。AIエージェントがインフラストラクチャを自動構築・デプロイする時代において、セキュリティを継続的に監視するための重要なツールとして注目されています。</description>
+  </item>
+  <item>
     <title>Experiment #011: claude-hud</title>
     <link>https://agentlab.example.com/experiments/011.html</link>
-    <description>Great for developers and researchers | Reason: We picked this because it's trending rapidly. | JA: 開発者向けの高速AIツールです。GitHub上で急速にスターを集めており、今注目のプロジェクトです。</description>
+    <description>- Displays context window usage, active tools, agents, and todo progress in Claude Code's statusline
+- Prevents context overflow by showing real token counts and consumption rates before hitting limits
+- Claude Code users managing complex multi-agent workflows requiring visibility into resource utilization</description>
   </item>
   <item>
     <title>Experiment #010: claude-hud</title>
     <link>https://agentlab.example.com/experiments/010.html</link>
-    <description>Great for developers and researchers | Reason: We picked this because it's trending rapidly.</description>
+    <description>- Renders real-time context usage, tool activity, and agent status in Claude Code's statusline
+- Prevents context window overflow by displaying native token metrics and consumption rates
+- Claude Code power users managing complex multi-agent workflows and long sessions</description>
   </item>
   <item>
-    <title>Experiment #006: opendataloader-pdf</title>
-    <link>https://agentlab.example.com/experiments/006.html</link>
-    <description>A powerful PDF Parser for AI-ready data aimed at automating PDF accessibility and open-source availability.</description>
-  </item>
-  <item>
-    <title>Experiment #005: superpowers</title>
-    <link>https://agentlab.example.com/experiments/005.html</link>
-    <description>An agentic skills framework and software development methodology that works effectively.</description>
-  </item>
-  <item>
-    <title>Experiment #004: open-swe</title>
-    <link>https://agentlab.example.com/experiments/004.html</link>
-    <description>An Open-Source Asynchronous Coding Agent</description>
-  </item>
-  <item>
-    <title>Experiment #003: opendataloader-pdf</title>
-    <link>https://agentlab.example.com/experiments/003.html</link>
-    <description>PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.</description>
+    <title>Experiment #009: opendataloader-pdf</title>
+    <link>https://agentlab.example.com/experiments/009.html</link>
+    <description>- Extracts structured data (Markdown, JSON, HTML) from PDFs with #1 benchmark accuracy (0.90)
+- Automates PDF accessibility compliance via auto-tagging to Tagged PDF/PDF/UA standards
+- For developers building RAG/LLM pipelines and accessibility-focused applications</description>
   </item>
 </channel>
 </rss>

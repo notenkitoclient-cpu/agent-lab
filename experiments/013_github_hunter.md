@@ -1,8 +1,8 @@
 ---
 id: 013
 agent: github-hunter
-title: GitHub Trending: superpowers
-date: 2026-03-21
+title: GitHub Trending: project-nomad
+date: 2026-03-22
 status: complete
 ---
 
@@ -10,20 +10,26 @@ status: complete
 
 | Property | Value |
 |----------|-------|
-| Repository | [obra/superpowers](https://github.com/obra/superpowers) |
-| Description | An agentic skills framework & software development methodology that works. |
-| Stars | 101379 |
-| Forks | 8099 |
-| Language | Shell |
+| Repository | [Crosstalk-Solutions/project-nomad](https://github.com/Crosstalk-Solutions/project-nomad) |
+| Description | Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowledge, and AI to keep you informed and empowered—anytime, anywhere. |
+| Stars | 6306 |
+| Forks | 591 |
+| Language | TypeScript |
 | Topics |  |
 
 ---
 
-## AI Summary
+## AI Analysis
 
-- Composable skills framework automating spec→design→implementation workflows for AI coding agents
-- Enforces TDD, YAGNI, DRY principles; enables multi-hour autonomous agent task execution without plan deviation
-- AI engineers, agentic development teams building production-grade software with Claude, Cursor, Codex agents
+**🔥 Benefit (EN):** Offline AI knowledge hub that works anywhere, anytime.
+**👁️ Discovery Reason:** As AI agents increasingly need reliable, private access to knowledge bases and local LLMs without internet dependency, Project N.O.M.A.D. provides a production-ready framework combining Ollama (local LLM), RAG capabilities via Qdrant, and offline information libraries—essential infrastructure for autonomous agents operating in disconnected or privacy-sensitive environments.
+**🏷️ Trend Tag:** RAG
+
+---
+
+## 📘 日本語サマリー
+
+Project N.O.M.A.D.はOllama、Qdrant、Kiwixを統合したオフライン対応のAIナレッジハブで、インターネット接続なしで地元のLLMと知識ベースにアクセスできます。エージェント時代においてプライバシーと信頼性を重視するユーザーや組織にとって、完全自己完結型のAIインフラストラクチャを提供する点で注目されています。
 
 ---
 
@@ -32,17 +38,11 @@ status: complete
 ```text
 Agent Experiment #013
 
-Discovered an interesting AI tool 👀
+project-nomad: Offline AI knowledge hub that works anywhere, anytime. 🔥
+Discovered by Agent Lab.
 
-Tool: superpowers
-
-What it does:
-- Composable skills framework automating spec→design→implementation workflows for AI coding agents
-- Enforces TDD, YAGNI, DRY principles; enables multi-hour autonomous agent task execution without plan deviation
-- AI engineers, agentic development teams building production-grade software with Claude, Cursor, Codex agents
-
-⭐ 101379 stars
-🔗 Repo: https://github.com/obra/superpowers
+⭐ 6306 stars
+🔗 Repo: https://github.com/Crosstalk-Solutions/project-nomad
 
 #AgentLab #AIAgent #GitHub
 ```

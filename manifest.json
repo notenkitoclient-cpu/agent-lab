@@ -97,6 +97,30 @@
       "date": "2026-03-20",
       "status": "complete",
       "file": "experiments/011_github_hunter.md"
+    },
+    {
+      "id": "012",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: trivy",
+      "date": "2026-03-22",
+      "status": "complete",
+      "file": "experiments/012_github_hunter.md"
+    },
+    {
+      "id": "013",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: project-nomad",
+      "date": "2026-03-22",
+      "status": "complete",
+      "file": "experiments/013_github_hunter.md"
+    },
+    {
+      "id": "014",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: opendataloader-pdf",
+      "date": "2026-03-22",
+      "status": "complete",
+      "file": "experiments/014_github_hunter.md"
     }
   ]
 }

@@ -1,8 +1,8 @@
 ---
 id: 012
 agent: github-hunter
-title: GitHub Trending: open-swe
-date: 2026-03-21
+title: GitHub Trending: trivy
+date: 2026-03-22
 status: complete
 ---
 
@@ -10,20 +10,26 @@ status: complete
 
 | Property | Value |
 |----------|-------|
-| Repository | [langchain-ai/open-swe](https://github.com/langchain-ai/open-swe) |
-| Description | An Open-Source Asynchronous Coding Agent |
-| Stars | 7589 |
-| Forks | 916 |
-| Language | Python |
-| Topics | agent, agents, ai, anthropic, claudecode, llm, llms, openai |
+| Repository | [aquasecurity/trivy](https://github.com/aquasecurity/trivy) |
+| Description | Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more |
+| Stars | 33351 |
+| Forks | 123 |
+| Language | Go |
+| Topics | containers, devsecops, docker, go, golang, hacktoberfest, iac, infrastructure-as-code, kubernetes, misconfiguration, security, security-tools, vulnerability, vulnerability-detection, vulnerability-scanners |
 
 ---
 
-## AI Summary
+## AI Analysis
 
-- Builds internal coding agents with LangGraph/Deep Agents framework composable architecture
-- Enables sandbox execution, Slack/Linear integration, and autonomous PR generation for engineering teams
-- Platform engineers customizing AI coding assistants for enterprise codebases and workflows
+**🔥 Benefit (EN):** Scan containers, code, and infrastructure for vulnerabilities in seconds.
+**👁️ Discovery Reason:** AI agents increasingly deploy containerized applications and infrastructure-as-code; Trivy enables automated security scanning across the entire deployment pipeline, making it essential for agent-driven DevOps workflows.
+**🏷️ Trend Tag:** DevTools
+
+---
+
+## 📘 日本語サマリー
+
+Trivyは、コンテナイメージ、ファイルシステム、Kubernetesなど複数の対象から脆弱性、設定ミス、シークレット情報を自動検出する総合的なセキュリティスキャナーです。AIエージェントがインフラストラクチャを自動構築・デプロイする時代において、セキュリティを継続的に監視するための重要なツールとして注目されています。
 
 ---
 
@@ -32,17 +38,11 @@ status: complete
 ```text
 Agent Experiment #012
 
-Discovered an interesting AI tool 👀
+trivy: Scan containers, code, and infrastructure for vulnerabilities in seconds. 🔥
+Discovered by Agent Lab.
 
-Tool: open-swe
-
-What it does:
-- Builds internal coding agents with LangGraph/Deep Agents framework composable architecture
-- Enables sandbox execution, Slack/Linear integration, and autonomous PR generation for engineering teams
-- Platform engineers customizing AI coding assistants for enterprise codebases and workflows
-
-⭐ 7589 stars
-🔗 Repo: https://github.com/langchain-ai/open-swe
+⭐ 33351 stars
+🔗 Repo: https://github.com/aquasecurity/trivy
 
 #AgentLab #AIAgent #GitHub
 ```
