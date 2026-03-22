@@ -121,6 +121,30 @@
       "date": "2026-03-22",
       "status": "complete",
       "file": "experiments/014_github_hunter.md"
+    },
+    {
+      "id": "015",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: TradingAgents",
+      "date": "2026-03-23",
+      "status": "complete",
+      "file": "experiments/015_github_hunter.md"
+    },
+    {
+      "id": "016",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: pentagi",
+      "date": "2026-03-23",
+      "status": "complete",
+      "file": "experiments/016_github_hunter.md"
+    },
+    {
+      "id": "017",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: production-agentic-rag-course",
+      "date": "2026-03-23",
+      "status": "complete",
+      "file": "experiments/017_github_hunter.md"
     }
   ]
 }
