@@ -169,6 +169,30 @@
       "date": "2026-03-24",
       "status": "complete",
       "file": "experiments/020_github_hunter.md"
+    },
+    {
+      "id": "021",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: deer-flow",
+      "date": "2026-03-25",
+      "status": "complete",
+      "file": "experiments/021_github_hunter.md"
+    },
+    {
+      "id": "022",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: supermemory",
+      "date": "2026-03-25",
+      "status": "complete",
+      "file": "experiments/022_github_hunter.md"
+    },
+    {
+      "id": "023",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: MoneyPrinterTurbo",
+      "date": "2026-03-25",
+      "status": "complete",
+      "file": "experiments/023_github_hunter.md"
     }
   ]
 }
