@@ -145,6 +145,30 @@
       "date": "2026-03-23",
       "status": "complete",
       "file": "experiments/017_github_hunter.md"
+    },
+    {
+      "id": "018",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: deer-flow",
+      "date": "2026-03-24",
+      "status": "complete",
+      "file": "experiments/018_github_hunter.md"
+    },
+    {
+      "id": "019",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: project-nomad",
+      "date": "2026-03-24",
+      "status": "complete",
+      "file": "experiments/019_github_hunter.md"
+    },
+    {
+      "id": "020",
+      "agent_id": "github-hunter",
+      "title": "GitHub Trending: pentagi",
+      "date": "2026-03-24",
+      "status": "complete",
+      "file": "experiments/020_github_hunter.md"
     }
   ]
 }
